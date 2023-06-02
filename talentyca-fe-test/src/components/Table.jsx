@@ -22,19 +22,19 @@ const Table = () => {
       aspek_penilaian_4: {},
     };
 
-    mahasiswa.forEach((mhs, index) => {
+    mahasiswa.forEach((mhs, i) => {
       const namaMahasiswa = mhs.nama;
       nilaiMahasiswa.aspek_penilaian_1[namaMahasiswa] = parseInt(
-        e.target.elements[`aspek_penilaian_1_${index}`].value
+        e.target.elements[`aspek_penilaian_1_${i}`].value
       );
       nilaiMahasiswa.aspek_penilaian_2[namaMahasiswa] = parseInt(
-        e.target.elements[`aspek_penilaian_2_${index}`].value
+        e.target.elements[`aspek_penilaian_2_${i}`].value
       );
       nilaiMahasiswa.aspek_penilaian_3[namaMahasiswa] = parseInt(
-        e.target.elements[`aspek_penilaian_3_${index}`].value
+        e.target.elements[`aspek_penilaian_3_${i}`].value
       );
       nilaiMahasiswa.aspek_penilaian_4[namaMahasiswa] = parseInt(
-        e.target.elements[`aspek_penilaian_4_${index}`].value
+        e.target.elements[`aspek_penilaian_4_${i}`].value
       );
     });
 
@@ -43,72 +43,75 @@ const Table = () => {
 
   return (
     <div style={{ width: '100%', marginBottom: '10%' }}>
-      <form onSubmit={handleSimpan}>
+        <form onSubmit={handleSimpan}>
         <div className="table-container">
-          <table className="table">
+            <table className="table">
             <thead>
-              <tr>
+                <tr>
                 <th>Foto</th>
                 <th>Mahasiswa</th>
                 <th>Aspek Penilaian 1</th>
                 <th>Aspek Penilaian 2</th>
                 <th>Aspek Penilaian 3</th>
                 <th>Aspek Penilaian 4</th>
-              </tr>
+                </tr>
             </thead>
             <tbody>
-              {mahasiswa.map((mhs, index) => (
+                {mahasiswa.map((mhs, index) => (
                 <tr key={mhs.nama}>
-                  <td>
+                    <td>
                     <img className="profile-picture" src={foto} alt="Profile" />
-                  </td>
-                  <td>{mhs.nama}</td>
-                  <td>
+                    </td>
+                    <td>{mhs.nama}</td>
+                    <td>
                     <select name={`aspek_penilaian_1_${index}`}>
-                      {options.map((option) => (
+                        {options.map((option) => (
                         <option key={option} value={option}>
-                          {option}
+                            {option}
                         </option>
-                      ))}
+                        ))}
                     </select>
-                  </td>
-                  <td>
+                    </td>
+                    <td>
                     <select name={`aspek_penilaian_2_${index}`}>
-                      {options.map((option) => (
+                        {options.map((option) => (
                         <option key={option} value={option}>
-                          {option}
+                            {option}
                         </option>
-                      ))}
+                        ))}
                     </select>
-                  </td>
-                  <td>
+                    </td>
+                    <td>
                     <select name={`aspek_penilaian_3_${index}`}>
-                      {options.map((option) => (
+                        {options.map((option) => (
                         <option key={option} value={option}>
-                          {option}
+                            {option}
                         </option>
-                      ))}
+                        ))}
                     </select>
-                  </td>
-                  <td>
+                    </td>
+                    <td>
                     <select name={`aspek_penilaian_4_${index}`}>
-                      {options.map((option) => (
+                        {options.map((option) => (
                         <option key={option} value={option}>
-                          {option}
+                            {option}
                         </option>
-                      ))}
+                        ))}
                     </select>
-                  </td>
+                    </td>
                 </tr>
-              ))}
+                ))}
             </tbody>
-          </table>
+            </table>
         </div>
         <button type="submit" className="custom-button">
-          Simpan
+            Simpan
         </button>
-      </form>      
-      <pre style={{marginTop: '6rem', marginLeft: '14rem', marginRight: '14rem'}}>{JSON.stringify(aspekPenilaian, null, 2)}</pre>
+        </form>      
+        <pre style={{marginTop: '6rem', marginLeft: '14rem', marginRight: '14rem', display: 'flex', flexFlow: 'column'}}>
+            <span style={{fontSize: "25px", fontWeight: 'bold', marginBottom: '11px'}}>OUTPUT</span>
+            {JSON.stringify(aspekPenilaian, null, 2)}
+        </pre>
     </div>
   );
 };
